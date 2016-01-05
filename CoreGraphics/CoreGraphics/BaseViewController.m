@@ -7,11 +7,11 @@
 //
 
 #import "BaseViewController.h"
-#import "ChartView.h"
+#import "BaseView.h"
 
 
 @interface BaseViewController ()
-@property (strong, nonatomic) ChartView *chartView;
+@property (strong, nonatomic) IBOutlet BaseView *baseView;
 
 @end
 
@@ -19,31 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    if ([[[UIDevice currentDevice]systemVersion]floatValue] >= 7.0){
+        self.edgesForExtendedLayout = 0;
+        self.extendedLayoutIncludesOpaqueBars = NO;
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:YES];
-    self.chartView            = [[ChartView alloc] initWithFrame:CGRectMake(0, 50, 320, 400)];
-    NSMutableArray *arr       = [NSMutableArray arrayWithObjects:@"周一",@"周二",@"周三",@"周四",@"周五",@"周六", @"周日",nil];
-    NSMutableArray *arrY      = [NSMutableArray arrayWithObjects:@"0",@"10",@"20",@"30",@"40",@"50", @"60",nil];
-    NSMutableArray *arrYAxis  = [NSMutableArray arrayWithObjects:@"2",@"10",@"20",@"5",@"30",@"55", @"60",nil];
-    self.chartView.xAxisMark  = arr;
-    self.chartView.yAxisMark  = arrY;
-    self.chartView.yAxis      = arrYAxis;
-    self.chartView.xInterval  = 48;
-    self.chartView.yInterval  = 50;
-    self.chartView.percentage = 50/10;
-    [self.chartView startDraw];
-    self.chartView.chartType  = ChartTypeAnimationAndFillColor;
-    [self.view addSubview:self.chartView];
-}
 
-
-- (IBAction)changeAction:(id)sender {
-    NSMutableArray *arrYAxis = [NSMutableArray arrayWithObjects:@"2",@"15",@"20",@"35",@"30",@"55", @"20",nil];
-    self.chartView.chartType = ChartTypeAnimationAndFillColor;
-    self.chartView.yAxis     = arrYAxis;
-    [self.chartView startDraw];
+//    self.baseView = [[BaseView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+//    [self.baseView startDraw];
+//    [self.view addSubview:self.baseView];
 }
 
 - (void)didReceiveMemoryWarning {

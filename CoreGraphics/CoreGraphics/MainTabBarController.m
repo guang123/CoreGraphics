@@ -9,6 +9,7 @@
 #import "MainTabBarController.h"
 #import "XZMTabbarExtension.h"
 #import "BaseViewController.h"
+#import "ChartViewController.h"
 
 @interface MainTabBarController ()
 
@@ -42,7 +43,7 @@
     [self setUpChildControllerWith:[[BaseViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"精华"];
     
     /** 新帖 */
-    [self setUpChildControllerWith:[[BaseViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"新帖"];
+    [self setUpChildControllerWith:[[ChartViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"新帖"];
     
     /** 关注 */
     [self setUpChildControllerWith:[[BaseViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"关注"];

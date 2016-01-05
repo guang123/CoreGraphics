@@ -118,6 +118,7 @@
     chartY               = 50;
     //1.取得图形上下文对象
     CGContextRef context = UIGraphicsGetCurrentContext();
+     NSLog(@"CGContextGetTypeID%lu",CGContextGetTypeID());
     //绘制竖线
     //2.创建路径对象
     CGMutablePathRef path = CGPathCreateMutable();
@@ -248,8 +249,6 @@
         graphPathLayer.zPosition    = 1;
         [self.layer addSublayer:graphPathLayer];
         CGPathRelease(pathLine);
-
     }
-
 }
 @end
