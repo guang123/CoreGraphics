@@ -10,6 +10,7 @@
 #import "XZMTabbarExtension.h"
 #import "BaseViewController.h"
 #import "ChartViewController.h"
+#import "PieChartViewController.h"
 
 @interface MainTabBarController ()
 
@@ -40,16 +41,16 @@
     
     /*添加子控制器 */
     /** 精华 */
-    [self setUpChildControllerWith:[[BaseViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"精华"];
+    [self setUpChildControllerWith:[[BaseViewController alloc]init] norImage:[UIImage imageNamed:@"tabBar_essence_icon"] selImage:[UIImage imageNamed:@"tabBar_essence_click_icon"] title:@"基础"];
     
-    /** 新帖 */
-    [self setUpChildControllerWith:[[ChartViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"新帖"];
+    /** 折线 */
+    [self setUpChildControllerWith:[[ChartViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_new_icon"] selImage:[UIImage imageNamed:@"tabBar_new_click_icon"]title:@"折线"];
     
-    /** 关注 */
-    [self setUpChildControllerWith:[[BaseViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"关注"];
+    /** 饼图 */
+    [self setUpChildControllerWith:[[PieChartViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_friendTrends_icon"] selImage:[UIImage imageNamed:@"tabBar_friendTrends_click_icon"] title:@"饼图"];
     
-    /** 我的 */
-    [self setUpChildControllerWith:[[BaseViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"我的"];
+    /** 基础 */
+    [self setUpChildControllerWith:[[BaseViewController alloc] init] norImage:[UIImage imageNamed:@"tabBar_me_icon"] selImage:[UIImage imageNamed:@"tabBar_me_click_icon"] title:@"基础"];
     /** 配置中间按钮 */
     [self.tabBar setUpTabBarCenterButton:^(UIButton *centerButton) {
         [centerButton setBackgroundImage:[UIImage imageNamed:@"tabBar_publish_icon"] forState:UIControlStateNormal];

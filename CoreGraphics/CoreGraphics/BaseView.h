@@ -228,23 +228,128 @@
  CGContextSetStrokeColor(CGContextRef __nullable c,const CGFloat * __nullable components)
  
  *************************** 模式功能
- 模式概念http://www.cnblogs.com/kenshincui/p/3959951.html
+ 模式概念及应用http://www.cnblogs.com/kenshincui/p/3959951.html
  自定义填充模式：一种颜色的填充方式。通过绘制一个基本的颜色模板，以该模板填充指定区域
  类型：有色填充，无色填充。有色填充先指定模板的颜色后绘制；无色填充是先绘制然后在绘制中填充模板颜色
- 填充模式应用http://blog.sina.com.cn/s/blog_9e8867eb0101gfqd.html
  
  设置颜色填充模式
  CGContextSetFillPattern(CGContextRef __nullable c,CGPatternRef __nullable pattern, const CGFloat * __nullable components)
  
  设置描边颜色填充模式
  CGContextSetStrokePattern(CGContextRef __nullable c,CGPatternRef __nullable pattern, const CGFloat * __nullable components)
+ 
+ 设置模板定位
+ CGContextSetPatternPhase(CGContextRef __nullable c, CGSize phase)
+ 
+ 设置填充灰度
+ CGContextSetGrayFillColor(CGContextRef __nullable c,CGFloat gray, CGFloat alpha)
+ 
+ 设置描边灰度
+ CGContextSetGrayStrokeColor(CGContextRef __nullable c,CGFloat gray, CGFloat alpha)
+ 
+ 设置RBG填充颜色
+ CGContextSetRGBFillColor(CGContextRef __nullable c, CGFloat red,CGFloat green, CGFloat blue, CGFloat alpha)
+ 
+ 使用RGB描边
+ CGContextSetRGBStrokeColor(CGContextRef __nullable c,CGFloat red, CGFloat green, CGFloat blue, CGFloat alpha)
+ 
+ 设置CMYK填充颜色
+ CGContextSetCMYKFillColor(CGContextRef __nullable c,CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha)
+ 
+ 设置CMYB描边
+ CGContextSetCMYKStrokeColor(CGContextRef __nullable c,CGFloat cyan, CGFloat magenta, CGFloat yellow, CGFloat black, CGFloat alpha)
+ 
+ 设置渲染意向
+ CGContextSetRenderingIntent(CGContextRef __nullable c,CGColorRenderingIntent intent)
+ CGContextSetRenderingIntent，默认kCGRenderingIntentDefault
+ － 视觉匹配：不同设备输出在视觉上保持一致。 kCGRenderingIntentPerceptual
+ － 相对色阶匹配：kCGRenderingIntentRelativeColorimetric
+ － 饱和度匹配：kCGRenderingIntentSaturation
+ － 绝对色阶匹配：kCGRenderingIntentAbsoluteColorimetric
+ 
+ *************************** 阴影
+ 
+ 设置阴影 offset偏移量 blur模糊值  color颜色
+ CGContextSetShadowWithColor(CGContextRef __nullable c,CGSize offset, CGFloat blur, CGColorRef __nullable color)
+ 
+ 设置阴影
+ CGContextSetShadow(CGContextRef __nullable c, CGSize offset,CGFloat blur）
+ 
+ 线性颜色渐变http://www.cnblogs.com/pengyingh/articles/2378840.html（渐变需设置颜色空间）
+ CGContextDrawLinearGradient(CGContextRef __nullable c,CGGradientRef __nullable gradient, CGPoint startPoint, CGPoint endPoint,CGGradientDrawingOptions options)
+ 
+ 仿射状颜色渐变
+ CGContextDrawRadialGradient(CGContextRef __nullable c,CGGradientRef __nullable gradient, CGPoint startCenter, CGFloat startRadius,CGPoint endCenter, CGFloat endRadius, CGGradientDrawingOptions options)
+ 
+ 使用渐变来绘制上下文的裁减区域http://www.tuicool.com/articles/biieum
+ CGContextDrawShading(CGContextRef __nullable c,__nullable CGShadingRef shading)
+ 
+ *************************** 文字
+ 文字间距
+ CGContextSetCharacterSpacing(CGContextRef __nullable c,CGFloat spacing)
+ 
+ 文字位置
+ CGContextSetTextPosition(CGContextRef __nullable c,CGFloat x, CGFloat y)
+ 
+ 获取文字位置
+ CGContextGetTextPosition(CGContextRef __nullable c)
+ 
+ 设置文字映射
+ CGContextSetTextMatrix(CGContextRef __nullable c,CGAffineTransform t)
+ 
+ 获取文字映射矩阵
+ CGContextGetTextMatrix(CGContextRef __nullable c)
+ 
+ 设置文字绘制模式
+ CGContextSetTextDrawingMode(CGContextRef __nullable c,CGTextDrawingMode mode)
+ 
+ 设置字体大小
+ CGContextSetFont(CGContextRef __nullable c,CGFontRef __nullable font)
+ 
+ 设置文字宽高
+ CGContextSetFontSize(CGContextRef __nullable c, CGFloat size)
+ 
+ 设置文字绘制的位置
+ CGContextShowGlyphsAtPositions(CGContextRef __nullable c,const CGGlyph * __nullable glyphs, const CGPoint * __nullable Lpositions,size_t count)
+ 
+ 设置是否应该字体平滑
+ CGContextSetShouldSmoothFonts(CGContextRef __nullable c,bool shouldSmoothFonts)
+ CGContextSetAllowsFontSmoothing(CGContextRef __nullable c,bool allowsFontSmoothing)
+ 
+ CGContextSetShouldSubpixelPositionFonts(CGContextRef __nullable c, bool shouldSubpixelPositionFonts)
+ CGContextSetAllowsFontSubpixelPositioning(CGContextRef __nullable c, bool allowsFontSubpixelPositioning)
+ 
+ CGContextSetShouldSubpixelQuantizeFonts(CGContextRef __nullable c, bool shouldSubpixelQuantizeFonts)
+ 
+ 
+ *************************** 管理图形上下文
+ CGContextFlush       强制所有挂起的绘图操作在一个窗口上下文中立即被渲染到目标设备。
+ CGContextGetTypeID   返回Quartz图形上下文的类型标识符。
+ CGContextRelease     图形上下文的引用计数-1。
+ CGContextRetain      图形上下文的引用计数+1。
+ CGContextSynchronize 将一个窗口的图像上下文内容更新，即所有的绘图操作都会在下次同步到窗口上
+ 
+*************************** 保真 用于抗锯齿
+ 允许保真
+ CGContextSetAllowsAntialiasing(CGContextRef __nullable c,bool allowsAntialiasing)
+
+ 设置保真
+ CGContextSetShouldAntialias(CGContextRef __nullable c,bool allowsAntialiasing)
+ 
+ *************************** 透明层 http://blog.csdn.net/rhljiayou/article/details/10144993
+ 
+ 绘制一个透明层
+ CGContextBeginTransparencyLayer(CGContextRef __nullable c,CFDictionaryRef __nullable auxiliaryInfo)
+ CGContextBeginTransparencyLayerWithRect(CGContextRef __nullable c, CGRect rect, CFDictionaryRef __nullable auxInfo)
+ 
+ 关闭透明层
+ CGContextEndTransparencyLayer(CGContextRef __nullable c)
  ********************************************************************************************/
 #import <UIKit/UIKit.h>
 
 @interface BaseView : UIView{
     float viewH;//当前视图宽
     float viewW;//当前视图高
-    
 }
 
 //开始绘制表格

@@ -12,6 +12,9 @@
 		FA5994161C3113BF009C7BAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5994151C3113BF009C7BAA /* Assets.xcassets */; settings = {ASSET_TAGS = (); }; };
 		FA5994191C311734009C7BAA /* ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5994181C311734009C7BAA /* ChartView.m */; settings = {ASSET_TAGS = (); }; };
 		FADDA75A1C35333B009E13A1 /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = FADDA7591C35333B009E13A1 /* BaseView.m */; settings = {ASSET_TAGS = (); }; };
+		FAF757AE1C3CFB53002D9CD8 /* PieChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF757AC1C3CFB53002D9CD8 /* PieChartViewController.m */; settings = {ASSET_TAGS = (); }; };
+		FAF757AF1C3CFB53002D9CD8 /* PieChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAF757AD1C3CFB53002D9CD8 /* PieChartViewController.xib */; settings = {ASSET_TAGS = (); }; };
+		FAF757B21C3CFBFA002D9CD8 /* PieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF757B11C3CFBFA002D9CD8 /* PieChartView.m */; settings = {ASSET_TAGS = (); }; };
 		FAFC0EF21C30C9EB000E73B0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0EF11C30C9EB000E73B0 /* main.m */; };
 		FAFC0EF51C30C9EB000E73B0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAFC0EF41C30C9EB000E73B0 /* AppDelegate.m */; };
 		FAFC0F001C30C9EB000E73B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFC0EFE1C30C9EB000E73B0 /* LaunchScreen.storyboard */; };
@@ -30,6 +33,11 @@
 		FA5994181C311734009C7BAA /* ChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartView.m; sourceTree = "<group>"; };
 		FADDA7581C35333B009E13A1 /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		FADDA7591C35333B009E13A1 /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
+		FAF757AB1C3CFB53002D9CD8 /* PieChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartViewController.h; sourceTree = "<group>"; };
+		FAF757AC1C3CFB53002D9CD8 /* PieChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartViewController.m; sourceTree = "<group>"; };
+		FAF757AD1C3CFB53002D9CD8 /* PieChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PieChartViewController.xib; sourceTree = "<group>"; };
+		FAF757B01C3CFBFA002D9CD8 /* PieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChartView.h; sourceTree = "<group>"; };
+		FAF757B11C3CFBFA002D9CD8 /* PieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChartView.m; sourceTree = "<group>"; };
 		FAFC0EED1C30C9EB000E73B0 /* CoreGraphics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreGraphics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFC0EF11C30C9EB000E73B0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAFC0EF31C30C9EB000E73B0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -118,10 +126,12 @@
 		FAFC3BF11C3A079600910ADB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA5994171C311734009C7BAA /* ChartView.h */,
-				FA5994181C311734009C7BAA /* ChartView.m */,
 				FADDA7581C35333B009E13A1 /* BaseView.h */,
 				FADDA7591C35333B009E13A1 /* BaseView.m */,
+				FA5994171C311734009C7BAA /* ChartView.h */,
+				FA5994181C311734009C7BAA /* ChartView.m */,
+				FAF757B01C3CFBFA002D9CD8 /* PieChartView.h */,
+				FAF757B11C3CFBFA002D9CD8 /* PieChartView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -135,6 +145,9 @@
 				FAFC3BF31C3A082700910ADB /* ChartViewController.h */,
 				FAFC3BF41C3A082700910ADB /* ChartViewController.m */,
 				FAFC3BF51C3A082700910ADB /* ChartViewController.xib */,
+				FAF757AB1C3CFB53002D9CD8 /* PieChartViewController.h */,
+				FAF757AC1C3CFB53002D9CD8 /* PieChartViewController.m */,
+				FAF757AD1C3CFB53002D9CD8 /* PieChartViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -196,6 +209,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF757AF1C3CFB53002D9CD8 /* PieChartViewController.xib in Resources */,
 				FA5994141C311166009C7BAA /* BaseViewController.xib in Resources */,
 				FAFC3BF71C3A082700910ADB /* ChartViewController.xib in Resources */,
 				FA5994161C3113BF009C7BAA /* Assets.xcassets in Resources */,
@@ -213,7 +227,9 @@
 				FAFC0EF51C30C9EB000E73B0 /* AppDelegate.m in Sources */,
 				FAFC3BF61C3A082700910ADB /* ChartViewController.m in Sources */,
 				FA5994131C311166009C7BAA /* BaseViewController.m in Sources */,
+				FAF757B21C3CFBFA002D9CD8 /* PieChartView.m in Sources */,
 				FAFC0EF21C30C9EB000E73B0 /* main.m in Sources */,
+				FAF757AE1C3CFB53002D9CD8 /* PieChartViewController.m in Sources */,
 				FAFC0F141C311052000E73B0 /* MainTabBarController.m in Sources */,
 				FADDA75A1C35333B009E13A1 /* BaseView.m in Sources */,
 				FAFC0F0C1C310FD7000E73B0 /* XZMTabbarExtension.m in Sources */,
