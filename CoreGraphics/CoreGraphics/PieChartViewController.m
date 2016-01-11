@@ -30,7 +30,7 @@
     self.pieChartView.colorArr     = arrColor;
     self.pieChartView.numericalArr = arrNum;
     self.pieChartView.titleArr     = arrTitle;
-    [self.pieChartView startDraw];
+    //[self.pieChartView startDraw];
     self.pieChartView.title = @"一张大饼";
     [self.view addSubview:self.pieChartView];
 }

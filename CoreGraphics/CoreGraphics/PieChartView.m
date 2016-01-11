@@ -103,12 +103,11 @@
     float currentangel = 0;
     //饼图
     CGContextSaveGState(context);
-    //CGContextScaleCTM(context, 1.0, .9);//缩放 达到立体效果
     for(int i = 0; i< [_numericalArr count]; i++){
-        
         float startAngle = [self calculateRadian:currentangel];
         currentangel += [[_numericalArr objectAtIndex:i] floatValue] / sum;
         float endAngle = [self calculateRadian:currentangel];
+        
         CGContextBeginPath(context);
         //绘制上面的扇形
         CGContextMoveToPoint(context, center.x, center.y);
@@ -117,10 +116,21 @@
         CGContextAddArc(context, center.x, center.y, self.radius, startAngle, endAngle, 0);
         CGContextClosePath(context);
         CGContextDrawPath(context, kCGPathFill);
-        /*裁剪与路径绘制测试
+
+        //获取各弧度的中点
+        float radiansMidpointX = cos((endAngle - startAngle)/2 + startAngle) * self.radius  + center.x;;
+        float radiansMidpointY = sin((endAngle - startAngle)/2 + startAngle) * self.radius +  center.y;;
+        //获取各扇形平分线中点
+        float fanMidpointX = (radiansMidpointX + center.x)/2;
+        float fanMidpointY = (radiansMidpointY + center.y)/2;
+        //绘制文字
+        [self drawText:CGPointMake(fanMidpointX + 8, fanMidpointY - 9) text:_titleArr[i] font:17.0];
+        
+        
+        //按圆绘制路径裁剪与路径绘制测试
         CGContextSaveGState(context);
-        float starx = cos(startAngle) * self.radius  + center.x;
-        float stary = sin(startAngle) * self.radius +  center.y;
+        float starx = cos(startAngle) * self.radius  + center.x;//开始绘制弧的起点的X点坐标
+        float stary = sin(startAngle) * self.radius +  center.y;//开始绘制弧的起点的Y点坐标
         CGMutablePathRef path = CGPathCreateMutable();
         CGPathMoveToPoint(path, nil, center.x, center.y);
         CGPathAddLineToPoint(path, nil, starx, stary);
@@ -128,12 +138,12 @@
         CGPathAddArc(path, nil, center.x, center.y, self.radius, startAngle, endAngle, 0);
         CGPathCloseSubpath(path);
         CGContextAddPath(context, path);
-        //裁剪路径
+        //按路径裁剪
         CGContextClip(context);
         CGPathRelease(path);
-
-        CGRect rect = (CGRect)CGContextGetClipBoundingBox(context);
-        NSLog(@"\nrect.origin.x:%f\nrect.origin.y:%f\nrect.size.width:%f\nrect.size.height:%f\n",rect.origin.x,rect.origin.y,rect.size.width,rect.size.height);
+        
+        //绘制各扇形平分线中点
+        CGRect rect = CGRectMake(fanMidpointX, fanMidpointY, 2, 2);
         CAShapeLayer *graphPathLayer   = [CAShapeLayer layer];
         graphPathLayer.frame           = self.bounds;
         graphPathLayer.fillColor       = [UIColor clearColor].CGColor;
@@ -145,9 +155,8 @@
         }else if (i == 2){
             [graphPathLayer setStrokeColor:[UIColor cyanColor].CGColor];
         }else{
-            [graphPathLayer setStrokeColor:[UIColor purpleColor].CGColor];
+            [graphPathLayer setStrokeColor:[UIColor whiteColor].CGColor];
         }
-        
         [graphPathLayer setLineWidth:2];
         CGMutablePathRef subPath = CGPathCreateMutable();
         CGPathAddRect(subPath, nil, rect);
@@ -156,7 +165,6 @@
         [self.layer addSublayer:graphPathLayer];
         CGPathRelease(subPath);
         CGContextRestoreGState(context);
-        */
         
 
     }
@@ -186,11 +194,11 @@
         //计算文本高度
         NSDictionary * extdic = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont boldSystemFontOfSize:textFont], NSFontAttributeName,nil];
         CGSize explainlabelSize = CGSizeZero;
-        explainlabelSize =[text boundingRectWithSize:CGSizeMake(textWidth,100) options:NSStringDrawingUsesLineFragmentOrigin  attributes:extdic context:nil].size;
+        explainlabelSize =[text boundingRectWithSize:CGSizeMake(textWidth,21) options:NSStringDrawingUsesLineFragmentOrigin  attributes:extdic context:nil].size;
         return explainlabelSize.height;
     }else{
         //设置一个行高上限
-        CGSize size = CGSizeMake(textWidth,100);
+        CGSize size = CGSizeMake(textWidth,21);
         //计算实际frame大小
         CGSize labelsize = [text sizeWithFont:[UIFont boldSystemFontOfSize:textFont] constrainedToSize:size lineBreakMode:0];
         return labelsize.height;

@@ -31,7 +31,7 @@
 - (instancetype)initWithFrame:(CGRect)frame{
     self                 = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor clearColor];
         viewH                = frame.size.height;
         viewW                = frame.size.width;
     }
